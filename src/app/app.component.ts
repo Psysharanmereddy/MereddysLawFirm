@@ -42,7 +42,6 @@ export class AppComponent {
     }).afterClosed().subscribe({
       next: () => {
         this.getAllFilesData();
-        this.snackbar.open("Retreived All Files Succesfully", 'X');
       }
     });
   }

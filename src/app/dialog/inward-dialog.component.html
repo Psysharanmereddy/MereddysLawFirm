@@ -1,0 +1,70 @@
+<h1 mat-dialog-title> Enter File Details</h1>
+
+<div mat-dialog-content>
+
+   <form [formGroup]="inwardForm">
+     <!--  <mat-form-field appearance="outline">
+        <mat-label>Files Collected between</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date">
+          <input matEndDate placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>-->
+
+      <mat-form-field appearance="outline">
+        <mat-label>Corporation</mat-label>
+        <mat-select formControlName = "corporationName" placeholder="Corporation">
+            <mat-option *ngFor="let organization of organizationList" [value]="organization.name">{{ organization.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>File Number</mat-label>
+        <input formControlName = "fileNumber" matInput placeholder="File Number">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Branch</mat-label>
+        <mat-select formControlName = "branch" placeholder="Branch">
+            <mat-option *ngFor="let branch of branchList" [value]="branch.name">{{ branch.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Agent Name</mat-label>
+        <input formControlName = "agentName" matInput placeholder="Agent Name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Customer Name</mat-label>
+        <input formControlName = "customerName" matInput placeholder="Customer Name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Pickedup By</mat-label>
+        <mat-select formControlName = "pickedUpBy" placeholder="Pickup Boy">
+            <mat-option *ngFor="let pickUpBoy of pickupBoysList" [value]="pickUpBoy.name">{{ pickUpBoy.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Pickup Date</mat-label>
+        <input formControlName = "pickUpDate" matInput [matDatepicker]="picker">
+    <!-- mat-hint>MM/DD/YYYY</mat-hint> -->
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Drafter Assigned</mat-label>
+        <mat-select formControlName = "drafterAssigned" placeholder="Drafter">
+            <mat-option *ngFor="let drafter of drafterList" [value]="drafter.name">{{ drafter.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Status Of File</mat-label>
+          <mat-select formControlName = "status" placeholder="status">
+              <mat-option *ngFor="let status of statusList" [value]="status.name">{{ status.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+   </form>
+</div>
+<div mat-dialog-action [align]="'center'" style="margin-top: 8px">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addFile()">{{actionBtn}}</button>
+</div>
